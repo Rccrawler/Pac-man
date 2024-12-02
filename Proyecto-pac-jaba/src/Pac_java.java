@@ -74,14 +74,26 @@ public class Pac_java {
 
     private static void mover_per(String mobimiento){
         switch (mobimiento){
-            case "W":
+            case "W","w":
                 mapa[pac_pos_int_fila - 1][pac_pos_int_columna] = "P";
-            case "D":
-                mapa[pac_pos_int_fila][pac_pos_int_columna - 1] = "P";
-            case "A":
-                mapa[pac_pos_int_fila + 1][pac_pos_int_columna] = "P";
-            case "S":
+                mapa[pac_pos_int_fila][pac_pos_int_columna] = " ";
+                pac_pos_int_fila = pac_pos_int_fila-1;
+                break;
+            case "D","d":
                 mapa[pac_pos_int_fila][pac_pos_int_columna + 1] = "P";
+                mapa[pac_pos_int_fila][pac_pos_int_columna] = " ";
+                pac_pos_int_columna = pac_pos_int_columna+1;
+                break;
+            case "A","a":
+                mapa[pac_pos_int_fila][pac_pos_int_columna - 1] = "P";
+                mapa[pac_pos_int_fila][pac_pos_int_columna] = " ";
+                pac_pos_int_columna = pac_pos_int_columna -1;
+                break;
+            case "S","s":
+                mapa[pac_pos_int_fila + 1][pac_pos_int_columna] = "P";
+                mapa[pac_pos_int_fila][pac_pos_int_columna] = "d";
+                pac_pos_int_fila = pac_pos_int_fila+1;
+                break;
         }
     }
 
@@ -115,10 +127,13 @@ public class Pac_java {
 
         inprimir_mapa();
 
-
+    do{
         String mobimiento = leer.nextLine();
         mover_per(mobimiento);
-
         inprimir_mapa();
+    }while (true);
+
+
+
     }
 }
