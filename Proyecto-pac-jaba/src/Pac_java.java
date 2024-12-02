@@ -15,7 +15,6 @@ public class Pac_java {
     static int clay_pos_int_fila = 0;
     static int clay_pos_int_columna = 0;
     static int punt_max_map = 0;
-    static String mobimiento = " ";
 
     static String[][] mapa = {
             {"#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"},
@@ -73,21 +72,17 @@ public class Pac_java {
         }
     }
 
-    private static void mover_per(){
+    private static void mover_per(String mobimiento){
         switch (mobimiento){
             case "W":
-                
+                mapa[pac_pos_int_fila - 1][pac_pos_int_columna] = "P";
             case "D":
-
+                mapa[pac_pos_int_fila][pac_pos_int_columna - 1] = "P";
             case "A":
-
+                mapa[pac_pos_int_fila + 1][pac_pos_int_columna] = "P";
             case "S":
-
+                mapa[pac_pos_int_fila][pac_pos_int_columna + 1] = "P";
         }
-    }
-
-    private static void leer_mov(){
-        mobimiento = leer.nextLine();
     }
 
     private static void inprimir_mapa(){
@@ -120,9 +115,9 @@ public class Pac_java {
 
         inprimir_mapa();
 
-        leer_mov();
 
-        mover_per();
+        String mobimiento = leer.nextLine();
+        mover_per(mobimiento);
 
         inprimir_mapa();
     }
