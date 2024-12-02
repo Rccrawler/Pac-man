@@ -1,3 +1,4 @@
+import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -15,6 +16,7 @@ public class Pac_java {
     static int clay_pos_int_fila = 0;
     static int clay_pos_int_columna = 0;
     static int punt_max_map = 0;
+    static int punt_actual = 0;
 
     static String[][] mapa = {
             {"#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"},
@@ -75,23 +77,43 @@ public class Pac_java {
     private static void mover_per(String mobimiento){
         switch (mobimiento){
             case "W","w":
+                if (Objects.equals(mapa[pac_pos_int_fila - 1][pac_pos_int_columna], "#")){
+                    return;
+                }else if (Objects.equals(mapa[pac_pos_int_fila - 1][pac_pos_int_columna], ".")){
+                    punt_actual = punt_actual +10;
+                }
                 mapa[pac_pos_int_fila - 1][pac_pos_int_columna] = "P";
                 mapa[pac_pos_int_fila][pac_pos_int_columna] = " ";
                 pac_pos_int_fila = pac_pos_int_fila-1;
                 break;
             case "D","d":
+                if (Objects.equals(mapa[pac_pos_int_fila][pac_pos_int_columna + 1], "#")){
+                    return;
+                }else if (Objects.equals(mapa[pac_pos_int_fila][pac_pos_int_columna+ 1], ".")){
+                    punt_actual = punt_actual +10;
+                }
                 mapa[pac_pos_int_fila][pac_pos_int_columna + 1] = "P";
                 mapa[pac_pos_int_fila][pac_pos_int_columna] = " ";
                 pac_pos_int_columna = pac_pos_int_columna+1;
                 break;
             case "A","a":
+                if (Objects.equals(mapa[pac_pos_int_fila][pac_pos_int_columna - 1], "#")){
+                    return;
+                }else if (Objects.equals(mapa[pac_pos_int_fila][pac_pos_int_columna - 1], ".")){
+                    punt_actual = punt_actual +10;
+                }
                 mapa[pac_pos_int_fila][pac_pos_int_columna - 1] = "P";
                 mapa[pac_pos_int_fila][pac_pos_int_columna] = " ";
                 pac_pos_int_columna = pac_pos_int_columna -1;
                 break;
             case "S","s":
+                if (Objects.equals(mapa[pac_pos_int_fila + 1][pac_pos_int_columna], "#")){
+                    return;
+                }else if (Objects.equals(mapa[pac_pos_int_fila +1][pac_pos_int_columna], ".")){
+                    punt_actual = punt_actual +10;
+                }
                 mapa[pac_pos_int_fila + 1][pac_pos_int_columna] = "P";
-                mapa[pac_pos_int_fila][pac_pos_int_columna] = "d";
+                mapa[pac_pos_int_fila][pac_pos_int_columna] = " ";
                 pac_pos_int_fila = pac_pos_int_fila+1;
                 break;
         }
